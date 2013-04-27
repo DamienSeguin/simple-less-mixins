@@ -1,0 +1,352 @@
+/*
+ * Copyright (c) 2013 Damien SEGUIN
+ * http://damienseguin.me
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * There are plenty of library that do the same. It's a matter of taste.
+ * This takes the best of the following sources for my personnal workflow.
+ *
+ * Sources:
+ * http://lesshat.com/
+ * http://mateuszkocz.github.io/3l/
+ * https://github.com/clearleft/clearless
+ * https://github.com/mdo/preboot
+ * 
+ * http://css3please.com/
+ * http://css-tricks.com/snippets/css/useful-css3-less-mixins/
+ * http://coding.smashingmagazine.com/2010/04/28/css3-solutions-for-internet-explorer/
+ * 
+ */
+
+/* ==========================================================================
+   Summary
+   ========================================================================== */
+// Font-face
+// Background, Box model
+// Opacity
+// Border Radius
+// Gradients
+// Box Shadow
+// Transform
+// 3D
+// Transition
+// Animation
+// Others
+
+/* ==========================================================================
+   Font-face
+   ========================================================================== */
+// Usage : 
+// .font-face("Open Sans", "fonts/open-sans", false);
+.font-face (@name, @path, @svgFormat:true) when (@svgFormat) {
+	@font-face {
+	    font-family: @name;
+	    src: url('@{path}.eot');
+	    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
+	         url('@{path}.woff') format('woff'),
+	         url('@{path}.ttf') format('truetype'),
+			 url('@{path}.svg#@{name}') format('svg');
+		font-style: normal;
+		font-weight: normal;
+	}
+}
+.font-face (@name, @path, @svgFormat:false) when not (@svgFormat) {
+	@font-face {
+	    font-family: @name;
+	    src: url('@{path}.eot');
+	    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
+	         url('@{path}.woff') format('woff'),
+	         url('@{path}.ttf') format('truetype');
+	      	font-style: normal;
+	      	font-weight: normal;
+	}
+}
+
+/* ==========================================================================
+   Background, Box model
+   ========================================================================== */
+.background-size (@size) {
+	-moz-background-size: @size;
+	background-size: @size;
+}
+.background-clip (@type: padding-box) {
+	-moz-background-clip: @type;
+	-webkit-background-clip: @type;
+	background-clip: @type;
+}
+.box-sizing (@type: border-box) {
+	-moz-box-sizing: @type;
+	-webkit-box-sizing: @type;
+	-ms-box-sizing: @type;
+	box-sizing: @type;
+}
+
+/* ==========================================================================
+   Opacity
+   ========================================================================== */
+.opacity (@opacity: 0.5) {
+	opacity: @opacity;
+	@ieopacity: @opacity * 100;
+	filter: ~"alpha(opacity = @{ieopacity} )"; // IE8
+}
+
+/* ==========================================================================
+   Border Radius
+   ========================================================================== */
+.border-radius (@value: 5px) {
+	-webkit-border-radius: @value;
+	-moz-border-radius: @value;
+	border-radius: @value;
+	.background-clip();
+}
+.border-radiuses (@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
+	-webkit-border-top-left-radius: @topleft;
+	-webkit-border-top-right-radius: @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius: @bottomleft;
+	-moz-border-radius-topleft: @topleft;
+	-moz-border-radius-topright: @topright;
+	-moz-border-radius-bottomright: @bottomright;
+	-moz-border-radius-bottomleft: @bottomleft;
+	border-top-left-radius: @topleft;
+	border-top-right-radius: @topright;
+	border-bottom-right-radius: @bottomright;
+	border-bottom-left-radius: @bottomleft;
+	.background-clip();
+}
+.borderes (@topColor: #EEE, @c-right: #EEE, @bottomColor: #EEE, @c-left: #EEE) {
+	border-top: 1px solid @topColor;
+	border-right: 1px solid @c-right;
+	border-bottom: 1px solid @bottomColor;
+	border-left: 1px solid @c-left;
+}
+
+/* ==========================================================================
+   Gradients
+   ========================================================================== */
+// Usage :
+// .box { #gradient > .linear; }
+
+#gradient {
+	.linear (@bottomColor: #1b1b1b, @topColor: #000000, @botPercentage: 0%, @topPercentage: 100%) {
+		background:@topColor; // Fallback
+		background-image: linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -o-linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -moz-linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -webkit-linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -ms-linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(@botPercentage, @bottomColor), color-stop(@topPercentage, @topColor));
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor)); /* IE6 & IE7 */
+		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor); /* IE8+ */
+	}
+	.horizontal (@bottomColor: #1b1b1b, @topColor: #000000, @botPercentage: 0%, @topPercentage: 100%) {
+		background:@topColor; // Fallback
+		background-image: linear-gradient(left, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -o-linear-gradient(left, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -moz-linear-gradient(left, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -webkit-linear-gradient(left, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -ms-linear-gradient(left, @bottomColor @botPercentage, @topColor @topPercentage);
+		background-image: -webkit-gradient(linear, left top, right top, color-stop(@botPercentage, @bottomColor), color-stop(@topPercentage, @topColor));
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor)); /* IE6 & IE7 */
+		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor); /* IE8+ */
+	}
+}
+
+/* ==========================================================================
+   Box Shadow
+   ========================================================================== */
+.box-shadow (@horizontal: 0, @vertical: 1px, @blurAndSpread: 0 0, @color: #CCC) {
+	// blur and spread are optional
+	-webkit-box-shadow: @horizontal @vertical @blurAndSpread @color;
+	-moz-box-shadow: @horizontal @vertical @blurAndSpread @color;
+	box-shadow: @horizontal @vertical @blurAndSpread @color;
+}
+.inner-shadow (@horizontal:0, @vertical: 2px, @blurAndSpread: 0 0, @color: #CCC) {
+	-webkit-box-shadow: inset @horizontal @vertical @blurAndSpread @color;
+	-moz-box-shadow: inset @horizontal @vertical @blurAndSpread @color;
+	box-shadow: inset @horizontal @vertical @blurAndSpread @color;
+}
+.box-shadowes (@shadow-top: 0, @shadow-right: 0, @shadow-left: 0, @shadow-bottom: 0) {
+	-webkit-box-shadow: @shadow-top, @shadow-right, @shadow-left, @shadow-bottom;
+	-moz-box-shadow: @shadow-top, @shadow-right, @shadow-left, @shadow-bottom;
+	box-shadow: @shadow-top, @shadow-right, @shadow-left, @shadow-bottom; 
+}
+
+/* ==========================================================================
+   Transform
+   ========================================================================== */
+.transform (@arguments) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-ms-transform: @arguments;
+	-o-transform: @arguments;
+	transform: @arguments;
+}
+.transform-origin (@x:center, @y:center) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin: @x @y;
+	-ms-transform-origin: @x @y;
+	-o-transform-origin: @x @y;
+	transform-origin: @x @y;
+}
+.scale (@factor: 2) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: scale(@factor);
+	-ms-transform: scale(@factor);
+	-o-transform: scale(@factor);
+	transform: scale(@factor);
+}
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-ms-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	transform: rotate(@deg);
+
+	/* IE6-IE8 */
+	@radians: ~`parseInt("@{deg}") * Math.PI * 2 / 360`;
+	@costheta: ~`Math.cos("@{radians}")`;
+	@sintheta: ~`Math.sin("@{radians}")`;
+	@negsintheta: ~`"@{sintheta}" * -1`;
+	filter: ~"progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=@{costheta}, M12=@{negsintheta}, M21=@{sintheta}, M22=@{costheta})";
+	zoom: 1;
+}
+.skew (@degXAxis: 0, @degYAxis: 0) {
+	// skew is not standard
+	-webkit-transform: skewX(@degXAxis) skewY(@degYAxis);
+	-moz-transform: skewX(@degXAxis) skewY(@degYAxis);
+	-ms-transform: skewX(@degXAxis) skewY(@degYAxis);
+	-o-transform: skewX(@degXAxis) skewY(@degYAxis);
+	transform: skewX(@degXAxis) skewY(@degYAxis);
+}
+.translate (@x, @y: 0) {
+	-webkit-transform: translate(@x, @y);
+	-moz-transform: translate(@x, @y);
+	-ms-transform: translate(@x, @y);
+	-o-transform: translate(@x, @y);
+	transform: translate(@x, @y);
+}
+
+/* ==========================================================================
+   3D
+   ========================================================================== */
+.translate3d (@x, @y: 0, @z: 0) {
+	-webkit-transform: translate3d(@x, @y, @z);
+	-moz-transform: translate3d(@x, @y, @z);
+	-ms-transform: translate3d(@x, @y, @z);
+	-o-transform: translate3d(@x, @y, @z);
+	transform: translate3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+	-webkit-perspective: @value;
+	-moz-perspective: @value;
+	-ms-perspective: @value;
+	-o-perspective: @value;
+	perspective: @value;
+}
+
+/* ==========================================================================
+   Transition
+   ========================================================================== */
+.transition (@property: all 0.2s ease) {
+	-webkit-transition: @property; 
+	-moz-transition: @property; 
+	-o-transition: @property; 
+	transition: @property; 
+}
+.transition-transform (@transformProperty) {
+	-webkit-transition: -webkit-transform @transformProperty;
+	-moz-transition: -moz-transform @transformProperty;
+	-o-transition: -o-transform @transformProperty;
+	transition: transform @transformProperty;
+}
+
+/* ==========================================================================
+   Animation
+   ========================================================================== */
+// Usage
+// 
+// .box { .animation(animName, 1s, infinite, 0, linear); }
+// 
+// @-webkit-keyframes animName {.frames;}
+// @-moz-keyframes animName {.frames;}
+// @-ms-keyframes animName {.frames;}
+// @-o-keyframes animName {.frames;}
+// @keyframes animName {.frames;}
+
+// .frames() {
+// 	0% {margin-top: 0}
+// 	50% {margin-top: 200px;}
+// 	100% {margin-top: 0}
+// }
+// 
+// http://radiatingstar.com/css-keyframes-animations-with-less
+
+.animation (@name, @duration: 0.2s, @iterations: infinite, @delay: 0, @ease: ease) {
+	-webkit-animation: @name @duration @delay @ease;
+	-moz-animation:    @name @duration @delay @ease;
+	-ms-animation:     @name @duration @delay @ease;
+}
+
+/* ==========================================================================
+   Others
+   ========================================================================== */
+.filter (@argument: grayscale(5px)) {
+	-webkit-filter: @argument;
+	-moz-filter: @argument;
+	-o-filter: @argument;
+	-ms-filter: @argument;
+	filter: @argument;
+}
+.placeholder (@color: @input-color-placeholder) {
+	&:-moz-placeholder            { color: @color; } // Firefox 4-18
+	&::-moz-placeholder           { color: @color; } // Firefox 19+
+	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+.user-select (@argument: none) {
+	-webkit-user-select: @argument;
+	-moz-user-select: @argument;
+	-ms-user-select: @argument;
+    -o-user-select: @argument;
+	user-select: @argument;
+}
+// Sizing shortcuts
+.size (@width, @height) {
+	width: @width;
+	height: @height;
+}
+.square (@size) {
+	.size(@size, @size);
+}
+
+// LESS Stuffs
+// .loop(@index) when (@index > 0) {
+//     (~".element:nth-child(@{index})") {
+//     	@margin: @index * 5;
+//         margin-top: ~"@{margin}px";
+//     }
+//     .loop(@index - 1);
+// }
+// .loop (0) {}
+
+// // How to use the loop
+// @nb: 10;
+// .loop (@nb);
