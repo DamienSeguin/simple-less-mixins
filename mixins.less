@@ -54,29 +54,23 @@
    Font-face
    ========================================================================== */
 // Usage : 
-// .font-face("Open Sans", "fonts/open-sans", false);
+//  @font-face {
+// 		.font-face("Open Sans", "fonts/open-sans", false);
+// 	}
+// See https://github.com/cloudhead/less.js/issues/699
 .font-face (@name, @path, @svgFormat:true) when (@svgFormat) {
-	@font-face {
-	    font-family: @name;
-	    src: url('@{path}.eot');
-	    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
-	         url('@{path}.woff') format('woff'),
-	         url('@{path}.ttf') format('truetype'),
-			 url('@{path}.svg#@{name}') format('svg');
-		font-style: normal;
-		font-weight: normal;
-	}
+    font-family: @name;
+    src: ~"url('@{path}.eot')";
+    src: ~"url('@{path}.eot?#iefix') format('embedded-opentype'), url('@{path}.woff') format('woff'), url('@{path}.ttf') format('truetype'), url('@{path}.svg#@{name}') format('svg')";
+	font-style: normal;
+	font-weight: normal;
 }
 .font-face (@name, @path, @svgFormat:false) when not (@svgFormat) {
-	@font-face {
-	    font-family: @name;
-	    src: url('@{path}.eot');
-	    src: url('@{path}.eot?#iefix') format('embedded-opentype'),
-	         url('@{path}.woff') format('woff'),
-	         url('@{path}.ttf') format('truetype');
-	      	font-style: normal;
-	      	font-weight: normal;
-	}
+    font-family: @name;
+    src: ~"url('@{path}.eot')";
+    src: ~"url('@{path}.eot?#iefix') format('embedded-opentype'),url('@{path}.woff') format('woff'),url('@{path}.ttf') format('truetype')";
+  	font-style: normal;
+  	font-weight: normal;
 }
 
 /* ==========================================================================
