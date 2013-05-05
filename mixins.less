@@ -208,6 +208,13 @@
 	-o-transform-origin: @x @y;
 	transform-origin: @x @y;
 }
+.transform-style (@value: flat) {
+	// Value : flat or preserve-3d
+	-webkit-transform-style: @value;   
+	-moz-transform-style: @value;
+	-ms-transform-style: @value;
+	transform-style: @value; 
+}
 .scale (@factor: 2) {
 	-webkit-transform: scale(@factor);
 	-moz-transform: scale(@factor);
@@ -301,10 +308,10 @@
 // 
 // http://radiatingstar.com/css-keyframes-animations-with-less
 
-.animation (@name, @duration: 0.2s, @iterations: infinite, @delay: 0, @ease: ease) {
-	-webkit-animation: @name @duration @delay @ease;
-	-moz-animation:    @name @duration @delay @ease;
-	-ms-animation:     @name @duration @delay @ease;
+.animation (@name, @duration: 0.2s, @timingFunction:ease, @delay: 0, @iterations: infinite) {
+	-webkit-animation: @name @duration @timingFunction @delay @iterations ;
+	-moz-animation:    @name @duration @timingFunction @delay @iterations ;
+	-ms-animation:     @name @duration @timingFunction @delay @iterations ;
 }
 
 /* ==========================================================================
@@ -334,6 +341,13 @@
 	-ms-user-select: @argument;
     -o-user-select: @argument;
 	user-select: @argument;
+}
+.truncate () {
+	white-space: nowrap;
+	width: 100%;
+	-o-text-overflow: ellipsis; // Opera 9-10
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 // Sizing shortcuts
 .size (@width, @height) {
