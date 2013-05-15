@@ -175,7 +175,7 @@
    Box Shadow
    ========================================================================== */
 .box-shadow (@horizontal: 0, @vertical: 1px, @blurAndSpread: 0 0, @color: #CCC) {
-	// blur and spread are optional
+	// blur and spread are optional, but I often use one
 	-webkit-box-shadow: @horizontal @vertical @blurAndSpread @color;
 	-moz-box-shadow: @horizontal @vertical @blurAndSpread @color;
 	box-shadow: @horizontal @vertical @blurAndSpread @color;
@@ -280,11 +280,11 @@
 	-o-transition: @property; 
 	transition: @property; 
 }
-.transition-transform (@transformProperty) {
-	-webkit-transition: -webkit-transform @transformProperty;
-	-moz-transition: -moz-transform @transformProperty;
-	-o-transition: -o-transform @transformProperty;
-	transition: transform @transformProperty;
+.transition-transform (@transformProperty, @anotherProperty) {
+	-webkit-transition: -webkit-transform @transformProperty, @anotherProperty;
+	-moz-transition: -moz-transform @transformProperty, @anotherProperty;
+	-o-transition: -o-transform @transformProperty, @anotherProperty;
+	transition: transform @transformProperty, @anotherProperty;
 }
 
 /* ==========================================================================
@@ -309,9 +309,9 @@
 // http://radiatingstar.com/css-keyframes-animations-with-less
 
 .animation (@name, @duration: 0.2s, @timingFunction:ease, @delay: 0, @iterations: infinite) {
-	-webkit-animation: @name @duration @timingFunction @delay @iterations ;
-	-moz-animation:    @name @duration @timingFunction @delay @iterations ;
-	-ms-animation:     @name @duration @timingFunction @delay @iterations ;
+	-webkit-animation: @name @duration @timingFunction @delay @iterations;
+	-moz-animation:    @name @duration @timingFunction @delay @iterations;
+	-ms-animation:     @name @duration @timingFunction @delay @iterations;
 }
 
 /* ==========================================================================
@@ -329,11 +329,11 @@
 	-moz-backface-visibility: @visibility;
 	backface-visibility: @visibility;
 }
-.placeholder (@color: @input-color-placeholder) {
-	&:-moz-placeholder            { color: @color; } // Firefox 4-18
-	&::-moz-placeholder           { color: @color; } // Firefox 19+
-	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
-	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+.placeholder (@argument) {
+	&:-moz-placeholder            { @argument } // Firefox 4-18
+	&::-moz-placeholder           { @argument } // Firefox 19+
+	&:-ms-input-placeholder       { @argument } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { @argument } // Safari and Chrome
 }
 .user-select (@argument: none) {
 	-webkit-user-select: @argument;

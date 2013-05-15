@@ -27,6 +27,7 @@ Content :
 * .backface-visibility
 * .placeholder
 * .user-select
+* .truncate
 * .size
 * .square
 
