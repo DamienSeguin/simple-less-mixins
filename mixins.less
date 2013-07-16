@@ -222,6 +222,17 @@
 	-o-transform: scale(@factor);
 	transform: scale(@factor);
 }
+// Usage
+// 
+// Using filter has a lot of cons in IE9 and could be ugly 
+// (wrong rotation, dark background instead of transparency)
+// use conditionnal comment or the :root hack to target IE9 and remove the filter applied for IE6-IE8
+// 
+// .ie9 .box { filter: none; }
+// :root .box { filter: none; }
+// 
+// http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
 .rotate (@deg) {
 	-webkit-transform: rotate(@deg);
 	-moz-transform: rotate(@deg);
