@@ -1,0 +1,64 @@
+@import "../mixins";
+
+@font-face {
+  .font-face("Font Name Regular", "fonts/font-webfont", @svgFormat:true);
+}
+.selector {
+	.background-size();
+	.background-clip();
+	.box-sizing();
+	.opacity();
+	.border-radius();
+	.border-radiuses();
+	.borderes();
+	#gradient > .linear();
+	#gradient > .horizontal();
+	#gradient > .directional ();
+	.box-shadow();
+	.inner-shadow();
+	.box-shadowes();
+	.transform(scale(2));
+	.transform-origin();
+	.scale();
+	.rotate(45deg);
+	.skew(100px, 100px);
+	.translate(100px);
+	.translate3d(100px, 100px, 100px);
+	.perspective();
+	.transition();
+	.transition-transform(.5 ease-in-out, ~"color .2 ease-out, background-color .2 ease-out");
+}
+@-webkit-keyframes animName {.frames;}
+@-moz-keyframes animName {.frames;}
+@-ms-keyframes animName {.frames;}
+@-o-keyframes animName {.frames;}
+@keyframes animName {.frames;}
+
+.frames() {
+	0% {margin-top: 0}
+	50% {margin-top: 200px;}
+	100% {margin-top: 0}
+}
+.selector {
+	.animation(animName);
+	.filter();
+	.backface-visibility();
+	.placeholder();
+	.user-select();
+	.truncate();
+	.size(100px, 100px);
+	.square(100px);
+	.clearfix();
+	.ie7-inline-block();
+}
+
+.loop(@index) when (@index > 0) {
+
+    .element:nth-of-type(@{index}) {
+        @factor: (@index / 20);
+        opacity: round((1 - @factor), 2);
+    }
+
+    .loop((@index - 1));
+}
+.loop (14);

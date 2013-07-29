@@ -1,0 +1,352 @@
+/*
+ * Copyright (c) 2013 Damien SEGUIN
+ * http://damienseguin.me
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * There are plenty of library that do the same. It's a matter of taste.
+ * This takes the best of the following sources for my personnal workflow.
+ *
+ * Sources:
+ * http://lesshat.com/
+ * http://mateuszkocz.github.io/3l/
+ * https://github.com/clearleft/clearless
+ * https://github.com/mdo/preboot
+ * 
+ * http://css3please.com/
+ * http://css-tricks.com/snippets/css/useful-css3-less-mixins/
+ * http://coding.smashingmagazine.com/2010/04/28/css3-solutions-for-internet-explorer/
+ * 
+ */
+/* ==========================================================================
+   Summary
+   ========================================================================== */
+/* ==========================================================================
+   Font-face
+   ========================================================================== */
+/* ==========================================================================
+   Background, Box model
+   ========================================================================== */
+/* ==========================================================================
+   Opacity
+   ========================================================================== */
+/* ==========================================================================
+   Border Radius
+   ========================================================================== */
+/* ==========================================================================
+   Gradients
+   ========================================================================== */
+/* ==========================================================================
+   Box Shadow
+   ========================================================================== */
+/* ==========================================================================
+   Transform
+   ========================================================================== */
+/* ==========================================================================
+   3D
+   ========================================================================== */
+/* ==========================================================================
+   Transition
+   ========================================================================== */
+/* ==========================================================================
+   Animation
+   ========================================================================== */
+/* ==========================================================================
+   Others
+   ========================================================================== */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+@font-face {
+  font-family: "Font Name Regular";
+  src: url('fonts/font-webfont.eot');
+  src: url('fonts/font-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/font-webfont.woff') format('woff'), url('fonts/font-webfont.ttf') format('truetype'), url('fonts/font-webfont.svg#Font Name Regular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
+.selector {
+  -moz-background-size: auto auto;
+  background-size: auto auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 0.5;
+  filter: alpha(opacity = 0.5 * 100 );
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-top: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee;
+  background-image: -o-linear-gradient(bottom, #1b1b1b 0%, #000000 100%);
+  background-image: -moz-linear-gradient(bottom, #1b1b1b 0%, #000000 100%);
+  background-image: -webkit-linear-gradient(bottom, #1b1b1b 0%, #000000 100%);
+  background-image: -ms-linear-gradient(bottom, #1b1b1b 0%, #000000 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0%, #1b1b1b), color-stop(100%, #000000));
+  background-image: linear-gradient(bottom, #1b1b1b 0%, #000000 100%);
+  background: #000000;
+  background-image: -o-linear-gradient(left, #1b1b1b 0%, #000000 100%);
+  background-image: -moz-linear-gradient(left, #1b1b1b 0%, #000000 100%);
+  background-image: -webkit-linear-gradient(left, #1b1b1b 0%, #000000 100%);
+  background-image: -ms-linear-gradient(left, #1b1b1b 0%, #000000 100%);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, #1b1b1b), color-stop(100%, #000000));
+  background-image: linear-gradient(left, #1b1b1b 0%, #000000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1b1b1b', endColorstr='#000000', GradientType=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1b1b1b', endColorstr='#000000', GradientType=0)";
+  background-color: #333333;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(45deg, #555555, #333333);
+  background-image: -webkit-linear-gradient(45deg, #555555, #333333);
+  background-image: -o-linear-gradient(45deg, #555555, #333333);
+  background-image: linear-gradient(45deg, #555555, #333333);
+  -webkit-box-shadow: 0 1px 0 0 #cccccc;
+  -moz-box-shadow: 0 1px 0 0 #cccccc;
+  box-shadow: 0 1px 0 0 #cccccc;
+  -webkit-box-shadow: inset 0 2px 0 0 #cccccc;
+  -moz-box-shadow: inset 0 2px 0 0 #cccccc;
+  box-shadow: inset 0 2px 0 0 #cccccc;
+  -webkit-box-shadow: 0, 0, 0, 0;
+  -moz-box-shadow: 0, 0, 0, 0;
+  box-shadow: 0, 0, 0, 0;
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476);
+  zoom: 1;
+  -webkit-transform: skew(100px, 100px);
+  -moz-transform: skew(100px, 100px);
+  -ms-transform: skewX(100px) skewY(100px);
+  -o-transform: skew(100px, 100px);
+  transform: skew(100px, 100px);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate(100px, 0);
+  -moz-transform: translate(100px, 0);
+  -ms-transform: translate(100px, 0);
+  -o-transform: translate(100px, 0);
+  transform: translate(100px, 0);
+  -webkit-transform: translate3d(100px, 100px, 100px);
+  -moz-transform: translate3d(100px, 100px, 100px);
+  -ms-transform: translate3d(100px, 100px, 100px);
+  -o-transform: translate3d(100px, 100px, 100px);
+  transform: translate3d(100px, 100px, 100px);
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-transition: -webkit-transform 0.5 ease-in-out, color .2 ease-out, background-color .2 ease-out;
+  -moz-transition: -moz-transform 0.5 ease-in-out, color .2 ease-out, background-color .2 ease-out;
+  -o-transition: -o-transform 0.5 ease-in-out, color .2 ease-out, background-color .2 ease-out;
+  transition: transform 0.5 ease-in-out, color .2 ease-out, background-color .2 ease-out;
+}
+@-webkit-keyframes animName {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@-moz-keyframes animName {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@-ms-keyframes animName {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@-o-keyframes animName {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@keyframes animName {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+.selector {
+  -webkit-animation: animName 0.2s ease 0 infinite;
+  -moz-animation: animName 0.2s ease 0 infinite;
+  -ms-animation: animName 0.2s ease 0 infinite;
+  -webkit-filter: grayscale(5px);
+  -moz-filter: grayscale(5px);
+  -o-filter: grayscale(5px);
+  -ms-filter: grayscale(5px);
+  filter: grayscale(5px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  *display: inline;
+  *zoom: 1;
+}
+.selector:-moz-placeholder {
+  color: #222222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+.selector::-moz-placeholder {
+  color: #222222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+.selector:-ms-input-placeholder {
+  color: #222222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+.selector::-webkit-input-placeholder {
+  color: #222222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+.selector:before,
+.selector:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.selector:after {
+  clear: both;
+}
+.element:nth-of-type(14) {
+  opacity: 0.3;
+}
+.element:nth-of-type(13) {
+  opacity: 0.35;
+}
+.element:nth-of-type(12) {
+  opacity: 0.4;
+}
+.element:nth-of-type(11) {
+  opacity: 0.45;
+}
+.element:nth-of-type(10) {
+  opacity: 0.5;
+}
+.element:nth-of-type(9) {
+  opacity: 0.55;
+}
+.element:nth-of-type(8) {
+  opacity: 0.6;
+}
+.element:nth-of-type(7) {
+  opacity: 0.65;
+}
+.element:nth-of-type(6) {
+  opacity: 0.7;
+}
+.element:nth-of-type(5) {
+  opacity: 0.75;
+}
+.element:nth-of-type(4) {
+  opacity: 0.8;
+}
+.element:nth-of-type(3) {
+  opacity: 0.85;
+}
+.element:nth-of-type(2) {
+  opacity: 0.9;
+}
+.element:nth-of-type(1) {
+  opacity: 0.95;
+}
