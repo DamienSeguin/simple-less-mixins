@@ -96,9 +96,12 @@
    Opacity
    ========================================================================== */
 .opacity (@opacity: 0.5) {
+	@ieopacity: (@opacity * 100);
+	// IE 5-7
+	filter: ~"alpha(opacity=@{ieopacity})";
+	// IE 8
+	-ms-filter: %("progid:DXImageTransform.Microsoft.Alpha(Opacity='%d')", @ieopacity);
 	opacity: @opacity;
-	@ieopacity: @opacity * 100;
-	filter: ~"alpha(opacity = @{ieopacity} )"; // IE8
 }
 
 /* ==========================================================================
@@ -292,7 +295,7 @@
 	transition: @property; 
 }
 // Usage
-// .box { .transition-transform(.5 ease-in-out, ~"color .2 ease-out, background-color .2 ease-out"); }
+// .box { .transition-transform(.5s ease-in-out, ~"color .2s ease-out, background-color .2s ease-out"); }
 
 .transition-transform (@transformProperty, @othersProperties) {
 	-webkit-transition: -webkit-transform @transformProperty, @othersProperties;
