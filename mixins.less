@@ -97,10 +97,10 @@
    ========================================================================== */
 .opacity (@opacity: 0.5) {
 	@ieopacity: (@opacity * 100);
+	// IE 8
+	-ms-filter: %("progid:DXImageTransform.Microsoft.Alpha(Opacity=%d)", @ieopacity);
 	// IE 5-7
 	filter: ~"alpha(opacity=@{ieopacity})";
-	// IE 8
-	-ms-filter: %("progid:DXImageTransform.Microsoft.Alpha(Opacity='%d')", @ieopacity);
 	opacity: @opacity;
 }
 
@@ -395,20 +395,6 @@
 	.size(@size, @size);
 }
 
-// Clearfix
-.clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-  }
-  &:after {
-    clear: both;
-  }
-}
-
 // IE7 inline-block
 .ie7-inline-block() {
   *display: inline;
@@ -416,6 +402,8 @@
 }
 
 // LESS Stuffs
+// 
+// // Loop
 // .loop(@index) when (@index > 0) {
 
 //     .element:nth-of-type(@{index}) {
@@ -426,3 +414,17 @@
 //     .loop((@index - 1));
 // }
 // .loop (14);
+// 
+// // Clearfix
+// .clearfix {
+//   *zoom: 1;
+//   &:before,
+//   &:after {
+//     display: table;
+//     content: "";
+//     line-height: 0;
+//   }
+//   &:after {
+//     clear: both;
+//   }
+// }

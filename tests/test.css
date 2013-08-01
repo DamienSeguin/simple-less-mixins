@@ -70,18 +70,6 @@
 /* ==========================================================================
    Others
    ========================================================================== */
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
 @font-face {
   font-family: "Font Name Regular";
   src: url('fonts/font-webfont.eot');
@@ -96,8 +84,9 @@
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
   opacity: 0.5;
-  filter: alpha(opacity = 0.5 * 100 );
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -298,15 +287,6 @@
   color: #222222;
   font-size: 1em;
   line-height: 1.4;
-}
-.selector:before,
-.selector:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.selector:after {
-  clear: both;
 }
 .element:nth-of-type(14) {
   opacity: 0.3;

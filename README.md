@@ -30,7 +30,6 @@ Content :
 * .truncate
 * .size
 * .square
-* .clearfix
 * .ie7-inline-block
 
 For a complete solution, in bigger projects, take a look at:
