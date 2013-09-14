@@ -150,8 +150,8 @@
 		background-image: -ms-linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
 		background-image: -webkit-gradient(linear, left bottom, left top, color-stop(@botPercentage, @bottomColor), color-stop(@topPercentage, @topColor));
 		background-image: linear-gradient(bottom, @bottomColor @botPercentage, @topColor @topPercentage);
-		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor)); // IE6 & IE7
-		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@bottomColor,@topColor); // IE8+
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@topColor,@bottomColor)); // IE6 & IE7
+		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@topColor,@bottomColor); // IE8+
 	}
 	.horizontal (@leftColor: #1b1b1b, @rightColor: #000000, @leftPercentage: 0%, @rightPercentage: 100%) {
 		background:@rightColor; // Fallback
@@ -311,6 +311,8 @@
 // 
 // .box { .animation(animName, 1s, infinite, 0, linear); }
 // 
+// If ou use prefixed properies, you must write each keyframes individually.
+// Else you can create a mixin.
 // @-webkit-keyframes animName {.frames;}
 // @-moz-keyframes animName {.frames;}
 // @-ms-keyframes animName {.frames;}
