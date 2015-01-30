@@ -1,3 +1,5 @@
+# No longer maintained. Deprecated.
+
 # [Simple Less Mixins](https://github.com/DamienSeguin/simple-less-mixins)
 
 *Simple Less Mixins* is a collection of LESS mixins: the aim is to provide a simple solution for the day-to-day work on small/medium projects.
